@@ -1,6 +1,5 @@
 """
 stay_detection.py
------------------
 Detects stay points from raw GPS traces using Haversine distance thresholding.
 
 A stay point is a location where the user remained within RADIUS_M metres
@@ -17,7 +16,7 @@ MIN_STAY_MINUTES = 15   # minimum dwell time
 
 
 def haversine(lat1, lon1, lat2, lon2):
-    """Return great-circle distance in metres between two GPS coordinates."""
+    #Return great-circle distance in metres between two GPS coordinates.
     R = 6_371_000  # Earth radius in metres
     phi1, phi2 = math.radians(lat1), math.radians(lat2)
     dphi = math.radians(lat2 - lat1)
@@ -30,8 +29,7 @@ def detect_stays(df, radius_m=RADIUS_M, min_minutes=MIN_STAY_MINUTES):
     """
     Detect stay points from a GPS DataFrame.
 
-    Parameters
-    ----------
+    Parameters:
     df : pd.DataFrame
         Must have columns: latitude, longitude, timestamp (datetime).
     radius_m : float
@@ -39,8 +37,7 @@ def detect_stays(df, radius_m=RADIUS_M, min_minutes=MIN_STAY_MINUTES):
     min_minutes : int
         Minimum dwell time in minutes.
 
-    Returns
-    -------
+    Returns:
     list[dict]
         Each dict has: lat, lon, arrival, departure, duration_min, day_of_week, hour_slot.
     """
