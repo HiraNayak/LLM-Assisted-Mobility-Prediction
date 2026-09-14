@@ -23,7 +23,7 @@ Traditional location prediction relies on frequency heuristics ie predict wherev
 - 7-62 unique locations per user
 - Train/test split: last 7 days held out as test set
 
-**User profile:** University students tracked over a full academic semester. Stay history spans academic locations (libraries, lecture halls), residential (dorms, fraternities), and social/dining spots — giving the LLM rich semantic patterns to reason over.
+**User profile:** University students tracked over a full academic semester. Stay history spans academic locations (libraries, lecture halls), residential (dorms, fraternities), and social/dining spots giving the LLM rich semantic patterns to reason over.
 
 
 ## Results
@@ -34,7 +34,7 @@ Traditional location prediction relies on frequency heuristics ie predict wherev
 | u02  | 39        | 50          | **28.2%** | 25.6% | 2.0%   | **+2.6pp**  |
 | u03  | 9         | 7           | **77.8%** | 77.8% | 14.3%  | 0pp(matches baseline - low diversity) |
 
-**Key finding:** LLM achieves up to **43% relative improvement** over the frequency baseline (u01: 38.5% vs 26.9%). Performance is strongest at moderate location diversity (30–50 unique locations).
+**Key finding:** LLM achieves up to **43% relative improvement** over the frequency baseline (u01: 38.5% vs 26.9%). Performance is strongest at moderate location diversity (30-50 unique locations).
 
 
 ## Visualizations
@@ -45,7 +45,7 @@ GPS traces for a single user across all days, with detected pause/stay locations
 ![Trajectory with Pauses](figures/trajectory_with_pauses.png)
 
 ### Stay Detection with Uncertainty Radius
-Each detected stay point shown with a 100m uncertainty radius — the threshold used in Haversine-based clustering.
+Each detected stay point shown with a 100m uncertainty radius which is the threshold used in Haversine-based clustering.
 
 ![Uncertainty 100m](figures/uncertainty_100m.png)
 
@@ -53,7 +53,7 @@ Each detected stay point shown with a 100m uncertainty radius — the threshold 
 
 ## Tech Stack
 
-- **LLM:** Groq API — results reported using `llama-3.1-8b-instant` (now discontinued; code defaults to `groq/compound-mini`)
+- **LLM:** Groq API - results reported using `llama-3.1-8b-instant` (now discontinued; code defaults to `groq/compound-mini`)
 - **GPS Processing:** Custom Haversine stay-point detector (Python)
 - **POI Naming:** OpenStreetMap Overpass API + Nominatim fallback
 - **Mapping:** Folium / GPS coordinate plotting
@@ -85,12 +85,12 @@ python llm_localization.py
 
 ```
 llm-location-prediction/
-├── llm_localization.py       # Main pipeline — runs end-to-end
+├── llm_localization.py       # Main pipeline  runs end-to-end
 ├── stay_detection.py         # Haversine-based stay point detector
 ├── poi_naming.py             # OSM Overpass + Nominatim POI lookup
 ├── evaluate.py               # LLM vs freq vs random baseline eval
 ├── requirements.txt
-├── data/                     # StudentLife GPS data (not included — see dataset link)
+├── data/                     # StudentLife GPS data (not included - see dataset link)
 ├── cache/                    # Named stay cache, auto-created (JSON per user)
 ├── results/                  # Per-user accuracy results (JSON)
 └── figures/                  # Trajectory and stay visualizations
@@ -100,5 +100,5 @@ llm-location-prediction/
 
 ## Author
 
-Hira — MS ECE, Carnegie Mellon University  
+Hira - MS ECE, Carnegie Mellon University  
 Research in LLM-based mobility prediction and wireless localization.
