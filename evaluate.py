@@ -1,6 +1,5 @@
 """
 evaluate.py
------------
 Evaluates LLM location prediction against frequency baseline and random baseline.
 
 Train/test split: last 7 days of each user's stay history held out as test set.
@@ -17,13 +16,11 @@ def split_train_test(stays):
     """
     Split stays into train and test by date (last TEST_DAYS days = test).
 
-    Parameters
-    ----------
+    Parameters :
     stays : list[dict]
         Each dict must have 'arrival' (datetime) and 'name' fields.
 
-    Returns
-    -------
+    Returns :
     (train, test) : tuple[list, list]
     """
     if not stays:
@@ -42,8 +39,7 @@ def frequency_baseline(train, test):
     """
     Predict the most-frequent location in training data for every test stay.
 
-    Returns
-    -------
+    Returns :
     float : accuracy (0.0 – 1.0)
     """
     if not train or not test:
@@ -58,8 +54,7 @@ def random_baseline(train, test):
     """
     Predict a random location from the training set for every test stay.
 
-    Returns
-    -------
+    Returns :
     float : accuracy (0.0 – 1.0)
     """
     if not train or not test:
@@ -73,14 +68,12 @@ def slot_accuracy(predictions, test):
     """
     Break down accuracy by 2-hour time slot.
 
-    Parameters
-    ----------
+    Parameters:
     predictions : list[str]
         LLM predicted location names, same length as test.
     test : list[dict]
 
-    Returns
-    -------
+    Returns:
     dict[str, dict]  slot -> {correct, total, accuracy}
     """
     slot_stats = {}
@@ -102,14 +95,12 @@ def print_results(user_id, train, test, llm_preds, verbose=True):
     """
     Print a summary table for one user.
 
-    Parameters
-    ----------
+    Parameters :
     user_id : str
     train, test : list[dict]
     llm_preds : list[str]
 
-    Returns
-    -------
+    Returns :
     dict  with keys: llm_acc, freq_acc, rand_acc, n_test, n_unique
     """
     freq_acc  = frequency_baseline(train, test)
