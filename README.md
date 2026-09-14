@@ -7,16 +7,16 @@ Predicting a user's next location using a Large Language Model (LLM) conditioned
 Traditional location prediction relies on frequency heuristics ie predict wherever the user has spent the most time. This project replaces that heuristic with an LLM that reasons over a user's named stay history (e.g., "Baker-Berry Library", "Phi Tau", "Ripley Hall") and predicts the next location given the current time slot and day of week.
 
 **Pipeline:**
-1. **Stay Point Detection** - GPS traces → stay points using Haversine distance (100m radius, 15 min minimum dwell)
-2. **POI Naming** - Stay coordinates → human-readable location names via OSM Overpass API + Nominatim fallback
-3. **LLM Prediction** - Groq-hosted LLM predicts next stay given history + time context
+1. **Stay Point Detection** - GPS traces : stay points using Haversine distance (100m radius, 15 min minimum dwell)
+2. **POI Naming** - Stay coordinates : human-readable location names via OSM Overpass API and Nominatim fallback
+3. **LLM Prediction** - Groq-hosted LLM predicts next stay given history and time context
 4. **Evaluation** - Compared against frequency baseline and random baseline on last-7-days test split
 
 ---
 
 ## Dataset
 
-[Dartmouth StudentLife Spring 2013](http://studentlife.cs.dartmouth.edu/) — GPS traces from university students over a full semester.
+[Dartmouth StudentLife Spring 2013](http://studentlife.cs.dartmouth.edu/) : GPS traces from university students over a full semester.
 
 - 13 users processed (u01-u13)
 - 63-454 stay points per user
