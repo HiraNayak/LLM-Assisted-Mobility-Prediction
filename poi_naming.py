@@ -1,6 +1,5 @@
 """
 poi_naming.py
--------------
 Names GPS stay points using OpenStreetMap Overpass API (relations/ways/nodes)
 with Nominatim as a fallback.
 """
@@ -45,7 +44,7 @@ def _overpass_query(lat, lon, radius=SEARCH_RADIUS_M):
 
 
 def _nominatim_query(lat, lon):
-    """Reverse-geocode with Nominatim."""
+    #Reverse-geocode with Nominatim
     params = {
         "lat": lat,
         "lon": lon,
@@ -72,16 +71,14 @@ def name_stay(lat, lon, cache=None, delay=1.0):
     """
     Return a human-readable name for a stay point.
 
-    Parameters
-    ----------
+    Parameters:
     lat, lon : float
     cache : dict, optional
         Pass a dict to cache results by (lat, lon) key — avoids redundant API calls.
     delay : float
         Seconds to sleep between API calls (rate limiting).
 
-    Returns
-    -------
+    Returns:
     str
     """
     key = (round(lat, 5), round(lon, 5))
@@ -104,16 +101,14 @@ def name_stays(stays, cache=None, delay=1.0, verbose=True):
     """
     Add a 'name' field to each stay dict in-place.
 
-    Parameters
-    ----------
+    Parameters :
     stays : list[dict]
         Output of stay_detection.detect_stays().
     cache : dict, optional
     delay : float
     verbose : bool
 
-    Returns
-    -------
+    Returns:
     list[dict]  (same list, modified in-place)
     """
     if cache is None:
